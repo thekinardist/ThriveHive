@@ -9,16 +9,19 @@
  
  <a-scene
   renderer="color-management:true"
-  fog="color: white; type: exponential; density: 0.018;"
+  fog="color: white; type: exponential; density: 0.0;"
   map-loading>
   <a-assets>
  
     <a-asset-item
     id="way"
-    src="./assets/Clothing.glb"
+    src="./assets/Clothing_Rotating.glb"
     >
- 
     </a-asset-item>
+    <a-asset-item
+    id="way_0"
+    src="./assets/HeartAnimated.glb"
+    ></a-asset-item>
   </a-assets>
  
   <a-entity light="type: directional; intensity: 0.25; target: #m;" position="25 10 0"></a-entity>
@@ -41,20 +44,35 @@
     scale="100 100 100"
     lightship-map-theme="theme: nighttime"
     lightship-map-add-wayspots="primitive: a-cylinder; meters: 5; nearby-wayspots: false; project-wayspots: false "
-    zmap-debug-controls
+    map-debug-controls
     >
     //clothing spot
    <lightship-map-point
    lat-lng="42.349964, -71.066400"
    >
    <a-entity
+   id="clothes"
    scale="10 10 10"
    position="0 5 0"
    gltf-model="#way"
+   zanimation-mixer="clip: *; loop: repeat"
    ></a-entity>
- 
+   
+  
+
    ></a-box>
    </lightship-map-point>
+    <lightship-map-point
+    lat-lng="42.34999568751981, -71.07057351986353"
+    >
+    <a-entity
+    id="heart"
+    scale=" 10 10 10"
+    position="456.487 5 -53.870"
+    gltf-model="#way_0"
+    animation-mixer="clip: *; loop: repeat"
+    ></a-entity>
+    </lightship-map-point>
   //clothing spot
     <a-cone
       rotation="-90 0 0"
