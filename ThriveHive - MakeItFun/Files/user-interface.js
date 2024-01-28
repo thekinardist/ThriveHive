@@ -4,8 +4,8 @@ const uiComponent = {
     const iconmapheart = document.getElementById('heartmap')
     const iconmapfood = document.getElementById('foodmap')
     const iconmapsleep = document.getElementById('sleepmap')
- 
- 
+
+
     const tabslayer = document.getElementById('tabs')
     //
     const btn1 = document.getElementById('btn1')
@@ -19,11 +19,11 @@ const uiComponent = {
     const healthtab = document.getElementById('healthtab')
     const foodtab = document.getElementById('foodtab')
     const sleeptab = document.getElementById('sleeptab')
- 
- 
+
+
     // clothingtab.hidden = true
- 
- 
+
+
     console.log('init')
     const handleClick1 = () => {
       console.log('click1')
@@ -63,8 +63,8 @@ const uiComponent = {
       iconmapfood.setAttribute('visible', false)
       iconmapsleep.setAttribute('visible', true)
     }
- 
- 
+
+
     // console.log('init')
     const startAr = new CustomEvent('startar')
     const handleClick5 = () => {
@@ -77,11 +77,12 @@ const uiComponent = {
       // iconmapsleep.setAttribute('visible', false)
       window.dispatchEvent(startAr)
     }
- 
- 
+
+
     const stopAr = new CustomEvent('stopar')
     const handleClick6 = () => {
       console.log('click6')
+      tabslayer.style.display = 'none'
       //   // set visible
       //   // iconmapclothing.setAttribute('visible', false)
       //   // iconmapheart.setAttribute('visible', false)
@@ -89,8 +90,8 @@ const uiComponent = {
       //   // iconmapsleep.setAttribute('visible', false)
       window.dispatchEvent(stopAr)
     }
- 
- 
+
+
     // set buttonhandler for tab1
     const handleTabClick1 = () => {
       console.log('tab click1')
@@ -105,8 +106,8 @@ const uiComponent = {
       // sleeptab.setAttribute('visible', false)
       // foodtab.setAttribute('visible', false)
     }
- 
- 
+
+
     const handleTabClick2 = () => {
       console.log('tab click2')
       tabslayer.style.display = 'flex'
@@ -146,8 +147,8 @@ const uiComponent = {
       // foodtab.setAttribute('visible', false)
       // sleeptab.setAttribute('visible', true)
     }
- 
- 
+
+
     //
     btn1.addEventListener('click', handleClick1)
     btn2.addEventListener('click', handleClick2)
@@ -156,20 +157,21 @@ const uiComponent = {
     btn5.addEventListener('click', handleClick5)
     recenterBtn.addEventListener('click', handleClick6)
     //
- 
- 
+
+
     //
     iconmapclothing.addEventListener('click', handleTabClick1)
     iconmapheart.addEventListener('click', handleTabClick2)
     iconmapfood.addEventListener('click', handleTabClick3)
     iconmapsleep.addEventListener('click', handleTabClick4)
- 
- 
+
+
     //
   },
- }
- export {uiComponent}
- 
- 
- 
- 
+}
+export {uiComponent}
+
+
+
+
+
