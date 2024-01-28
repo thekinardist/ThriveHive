@@ -27,7 +27,7 @@ window.addEventListener('startar', ({detail}) => {
 
 
 window.addEventListener('stopar', () => {
- swapBody(require('./body.html'))
+ swapBody(require('./map.html'))
 })
 import {characterMoveComponent, characterRecenterComponent} from './components'
 AFRAME.registerComponent('character-move', characterMoveComponent)
@@ -41,4 +41,6 @@ AFRAME.registerComponent('no-cull', {
    })
  },
 })
+
+
 

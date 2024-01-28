@@ -9,14 +9,13 @@ const characterMoveComponent = {
     this.clearTouch = (e) => {
       this.startPositionRaw = null
     }
- 
- 
+    console.log('start AR joystick')
     window.addEventListener('onefingerstart', this.handleTouch)
     window.addEventListener('onefingermove', this.handleTouch)
     window.addEventListener('onefingerend', this.clearTouch)
  
  
-    const overlay = document.getElementById('ar-overlay')
+    const overlay = document.getElementById('overlay')
  
  
     this.joystickParent = document.createElement('div')
@@ -34,8 +33,7 @@ const characterMoveComponent = {
  
  
     overlay.appendChild(this.joystickParent)
- 
- 
+    console.log('end AR joystick')
     this.camera = document.getElementById('camera')
   },
  
@@ -137,23 +135,27 @@ const characterMoveComponent = {
  }
  
  
+ // const stopAr = new CustomEvent('stopar')
+ 
+ 
  const characterRecenterComponent = {
   init() {
-    const recenterBtn = document.getElementById('recenterBtn')
-    recenterBtn.addEventListener('click', () => {
-      recenterBtn.classList.add('pulse-once')
-      setTimeout(() => {
-        recenterBtn.classList.remove('pulse-once')
-      }, 500)
-      this.el.sceneEl.emit('recenter')
-      this.el.object3D.position.set(0, 0, 0)
-    })
+    // const recenterBtn = document.getElementById('recenterBtn')
+    // recenterBtn.addEventListener('click', () => {
+    // Stop AR return to Map
+    // window.dispatchEvent(stopAr)
+    //
+    // recenterBtn.classList.add('pulse-once')
+    // setTimeout(() => {
+    // recenterBtn.classList.remove('pulse-once')
+    // }, 500)
+    // this.el.sceneEl.emit('recenter')
+    // this.el.object3D.position.set(0, 0, 0)
+    // })
   },
  }
  
  
  export {characterMoveComponent, characterRecenterComponent}
- 
- 
  
  
