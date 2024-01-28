@@ -1,86 +1,250 @@
 <!-- Copyright (c) 2022 8th Wall, Inc. -->
 <!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
 <div id="gradient" class="gradient-move absolute-fill">
-  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-    <div class="spinner"></div>
-  </div>
- </div>
- 
- 
- <a-scene
-  renderer="color-management:true"
-  fog="color: white; type: exponential; density: 0.0;"
-  map-loading>
-  <a-assets>
- 
-    <a-asset-item
-    id="way"
-    src="./assets/Clothing_Rotating.glb"
-    >
-    </a-asset-item>
-    <a-asset-item
-    id="way_0"
-    src="./assets/HeartAnimated.glb"
-    ></a-asset-item>
-  </a-assets>
- 
-  <a-entity light="type: directional; intensity: 0.25; target: #m;" position="25 10 0"></a-entity>
-  <a-entity light="type: directional; intensity: 0.25; target: #m;" position="0 10 25"></a-entity>
-  <a-entity light="type: directional; intensity: 0.25; target: #m;" position="-25 10 0"></a-entity>
-  <a-entity light="type: directional; intensity: 0.25; target: #m;" position="0 10 -25"></a-entity>
-  <a-light type="ambient" intensity="0.8"></a-light>
-   <a-camera
-    near="1"
-    far="200"
-    lightship-map-controls="target: 0 5 0; min-distance: 7; max-distance: 25;">
-  </a-camera>
- 
- 
-  <a-sky radius="100" material="shader: lightship-map-sky-gradient"></a-sky>
-   <lightship-map
-    enable-gps = "false"
-    lat-lng="42.349964, -71.066400"
-    id="m"
-    scale="100 100 100"
-    lightship-map-theme="theme: nighttime"
-    lightship-map-add-wayspots="primitive: a-cylinder; meters: 5; nearby-wayspots: false; project-wayspots: false "
-    map-debug-controls
-    >
-    //clothing spot
-   <lightship-map-point
-   lat-lng="42.349964, -71.066400"
-   >
-   <a-entity
-   id="clothes"
-   scale="10 10 10"
-   position="0 5 0"
-   gltf-model="#way"
-   zanimation-mixer="clip: *; loop: repeat"
-   ></a-entity>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+      <div class="spinner"></div>
+    </div>
+   </div>
    
-  
-
-   ></a-box>
-   </lightship-map-point>
-    <lightship-map-point
-    lat-lng="42.34999568751981, -71.07057351986353"
-    >
-    <a-entity
-    id="heart"
-    scale=" 10 10 10"
-    position="456.487 5 -53.870"
-    gltf-model="#way_0"
-    animation-mixer="clip: *; loop: repeat"
-    ></a-entity>
-    </lightship-map-point>
-  //clothing spot
-    <a-cone
-      rotation="-90 0 0"
-      material="color: #C724B1; metalness: .7; roughness: .3"
-      height=".02"
-      radius-top="0"
-      radius-bottom=".005"
-      lightship-map-motion-direction>
-    </a-cone>
-  </lightship-map>
- </a-scene>
+   
+   <div id="overlay" style="z-index: 2">
+    <!-- <img id="recenterBtn" src="assets/BadgeCoinComponents/reset.svg" />
+    <h3>DRAG TO MOVE</h3> -->
+   
+   
+    <div id="tabs">
+      <button id="clothingtab">
+        <img src="assets/InformationOnPin/Health_Clinic.svg" />
+      </button>
+    </div>
+   
+   
+    <div id="healthtab">
+      <img src="./assets/InformationOnPin/Health_Clinic.svg" />
+    </div>
+   
+   
+    <div id="sleeptab">
+      <img src="./assets/InformationOnPin/Health_Clinic.svg" />
+    </div>
+   
+   
+    <div id="foodtab">
+      <img src="./assets/InformationOnPin/Health_Clinic.svg" />
+    </div>
+   </div>
+   
+   
+   <div id="btns">
+    <button id="btn1">
+      <img src="assets/MenuAssets/IconsClothing.svg" color="green" width="75" height="75" />
+    </button>
+   
+   
+    <button id="btn2">
+      <img src="assets/MenuAssets/IconsHealth.svg" color="pink" width="75" height="75" />
+    </button>
+   
+   
+    <button id="btn3">
+      <img src="assets/MenuAssets/IconsFood.svg" color="orange" width="75" height="75" />
+    </button>
+   
+   
+    <button id="btn4">
+      <img src="assets/MenuAssets/IconsShelter.svg" color="purple" width="75" height="75" />
+    </button>
+   
+   
+    <button id="btn5">
+      <img src="assets/MenuAssets/IconsDonate.svg" width="75" height="75" />
+    </button>
+   </div>
+   
+   
+   <a-scene
+    xrextras-gesture-detector
+    landing-page
+    xrextras-loading
+    xrextras-runtime-error
+    renderer="colorManagement:true"
+    zxrweb="allowedDevices: any"
+    renderer="color-management:true"
+    fog="color: white; type: exponential; density: 0.0;"
+    map-loading
+    ui>
+    <a-entity id="land-mat" material="color:#2f4c42"></a-entity>
+    <a-entity id="building-mat" material="color:#FF7F6E;opacity:0.9;"></a-entity>
+    <a-entity id="park-mat" material="color:#b5ca8d"></a-entity>
+    <a-entity id="parking-mat" material="color:#555d51"></a-entity>
+    <a-entity id="road-mat" material="color:#181616"></a-entity>
+    <a-entity id="transit-mat" material="color:#000000"></a-entity>
+    <a-entity id="sand-mat" material="color:#f3de8a"></a-entity>
+    <a-entity id="water-mat" material="color:#6b4369"></a-entity>
+   
+   
+    <a-entity light="type: directional; intensity: 0.25; target: #m;" position="25 10 0"></a-entity>
+    <a-entity light="type: directional; intensity: 0.25; target: #m;" position="0 10 25"></a-entity>
+    <a-entity light="type: directional; intensity: 0.25; target: #m;" position="-25 10 0"></a-entity>
+    <a-entity light="type: directional; intensity: 0.25; target: #m;" position="0 10 -25"></a-entity>
+    <a-light type="ambient" intensity="0.8"></a-light>
+   
+   
+    <a-assets>
+      <a-asset-item
+        id="Clothing_Rotating"
+        src="assets/MapPointAssets/Clothing_Rotating.glb"></a-asset-item>
+      <a-asset-item id="Food" src="assets/MapPointAssets/Food.glb"></a-asset-item>
+      <a-asset-item id="Sleep" src="assets/MapPointAssets/Sleep.glb"></a-asset-item>
+      <a-asset-item id="HeartAnimated" src="assets/MapPointAssets/HeartAnimated.glb"></a-asset-item>
+      <a-asset-item id="Information" src="assets/InformationOnPin/Health_Clinic.svg"></a-asset-item>
+      <a-asset-item id="robot_model" src="assets/BadgeCoinComponents/robot.glb"></a-asset-item>
+      <a-asset-item id="coin-model" src="assets/BadgeCoinComponents/coinnew.glb"></a-asset-item>
+    </a-assets>
+   
+   
+    <a-camera
+      id="camera"
+      position="0 4 4"
+      near="1"
+      far="200"
+      lightship-map-controls="target: 0 5 0; min-distance: 7; max-distance: 25;"
+      raycaster="objects: .cantap"
+      cursor="fuse: false; rayOrigin: mouse;">
+    </a-camera>
+   
+   
+    <a-sky
+      radius="100"
+      material="shader: lightship-map-sky-gradient"
+      material="shader: lightship-map-sky-gradient; bottomColor:#ffffff;
+      topColor:#3464d5; exponent: 0.65"></a-sky>
+   
+   
+    <lightship-map
+      enable-gps="false"
+      lat-lng="42.349964, -71.066400"
+      building-meters="3"
+      road-s-meters="2"
+      road-m-meters="4"
+      road-l-meters="8"
+      road-xl-meters="32"
+      transit-meters="8"
+      water-meters="6"
+      land-material="#land-mat"
+      building-material="#building-mat"
+      park-material="#park-mat"
+      parking-material="#parking-mat"
+      road-material="#road-mat"
+      transit-material="#transit-mat"
+      sand-material="#sand-mat"
+      water-material="#water-mat"
+      id="m"
+      scale="100 100 100"
+      lightship-map-add-wayspots="primitive: a-cylinder; meters: 5; nearby-wayspots: false; project-wayspots: false ">
+      <lightship-map-point lat-lng="42.349964, -71.066400">
+        <a-entity
+          id="clothing"
+          scale="20 20 20"
+          position="17.779 25 -35.382"
+          gltf-model="#Clothing_Rotating"
+          xrextras-spin="speed: 5000"
+          class="cantap"></a-entity>
+      </lightship-map-point>
+   
+   
+      <lightship-map-point lat-lng="42.349960, -71.067003">
+        <a-entity
+          id="heart"
+          scale="20 20 20"
+          position="0.020 25 -46.895"
+          gltf-model="#HeartAnimated"
+          xrextras-spin="speed: 5000"
+          class="cantap"></a-entity>
+      </lightship-map-point>
+   
+   
+      <lightship-map-point lat-lng="42.349956, -71.067303">
+        <a-entity
+          id="Sleep.glb"
+          scale="20 20 20"
+          position="122.958 25 12.843"
+          gltf-model="#Sleep"
+          xrextras-spin="speed: 5000"
+          class="cantap"></a-entity>
+      </lightship-map-point>
+   
+   
+      <lightship-map-point lat-lng="42.349968, -71.071503">
+        <a-entity
+          id="Food.glb"
+          scale="20 20 20"
+          position="380.231 25 23.009"
+          gltf-model="#Food"
+          xrextras-spin="speed: 5000"
+          class="cantap"></a-entity>
+      </lightship-map-point>
+   
+   
+      <a-entity
+        light="
+        type: directional;
+        intensity: 0.9;
+        castShadow: true;
+        shadowMapHeight:2048;
+        shadowMapWidth:2048;
+        shadowCameraTop: 20;
+        shadowCameraBottom: -20;
+        shadowCameraRight: 20;
+        shadowCameraLeft: -20;
+        target: #character;
+        shadowRadius: 4"
+        xrextras-attach="target: character; offset: 8 15 4"
+        position="1 4.3 2.5"
+        shadow>
+      </a-entity>
+   
+   
+      <a-light type="ambient" intensity="0.5"></a-light>
+   
+   
+      <a-entity
+        position="0 0.4 -5"
+        geometry="primitive: ring; radius-inner: 1.4; radius-outer: 1.5"
+        material="color: #aedbd6"
+        rotation="-90 0 0"
+        proximity-trigger="radius: 1.5"
+        xrextras-spin
+        shadow>
+        <a-entity id="coin" gltf-model="#coin-model" cubemap-realtime position="-1 0 2"></a-entity>
+      </a-entity>
+   
+   
+      <a-entity position="0 0.01 0.01">
+        <a-cone
+          rotation="-90 0 0"
+          material="color: #f46f8b; metalness: .7; roughness: .3"
+          height=".02"
+          depth="0.2"
+          radius-top="0"
+          radius-bottom=".005"
+          lightship-map-motion-direction>
+        </a-cone>
+      </a-entity>
+    </lightship-map>
+   
+   
+    <a-box
+      id="ground"
+      scale="1000 2 1000"
+      position="0 -1 0"
+      material="shader: shadow; transparent: true; opacity: 0.4"
+      shadow>
+    </a-box>
+   </a-scene>
+   
+   
+   
+   
+   
+   

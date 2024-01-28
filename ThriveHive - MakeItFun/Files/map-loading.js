@@ -21,5 +21,9 @@ const mapLoadingScreenComponent = {
         console.error(err.message)
       })
   },
-}
-export {mapLoadingScreenComponent}
+ }
+ export {mapLoadingScreenComponent}
+ 
+ 
+ 
+ 

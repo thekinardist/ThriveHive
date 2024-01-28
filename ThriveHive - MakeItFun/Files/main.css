@@ -1,52 +1,262 @@
-.gradient-move { animation: gradient-move 10s linear infinite; }
-@keyframes gradient-move {
- 0% {
-   background-position: 0% 0%;
- }
- 100% {
-   background-position: 100% 100%;
- }
-}
-#gradient {
- z-index: 9;
- /* add another 100% for each new color,
- always repeat the first two colors in the array*/
- background-size: 400% 400%;
- background-image: linear-gradient(140deg, #7611B6, #563BA4, #3A4AAA, #7611B6, #563BA4);
-}
-.absolute-fill {
- position: absolute;
- top: 0;
- left: 0;
- bottom: 0;
- right: 0;
-}
-.spinner {
- width: 4rem;
- height: 4rem;
- border-top: 3px solid rgba(255,255,255, .5);
- border-right: 3px solid transparent;
- border-radius: 50%;
- animation: rotation .8s linear infinite;
-}
-@keyframes rotation{
- from{
-   transform: rotate(0deg);
- }
- to{
-   transform: rotate(360deg);
- }
-}
-.fade-in { animation: fade-in 0.25s linear forwards; }
-@keyframes fade-in {
- 0% {opacity: 0;}
- 100% {opacity: 1;}
-}
-.fade-out { animation: fade-out 0.25s linear forwards; }
-@keyframes fade-out {
- 0% {opacity: 1;}
- 100% {opacity: 0;}
-}
-
-
-
+.gradient-move {
+    animation: gradient-move 10s linear infinite;
+   }
+   @keyframes gradient-move {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+   }
+   #gradient {
+    z-index: 2;
+    /* add another 100% for each new color,
+    always repeat the first two colors in the array*/
+    background-size: 400% 400%;
+    background-image: linear-gradient(140deg, #7611b6, #563ba4, #3a4aaa, #7611b6, #563ba4);
+   }
+   .absolute-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+   }
+   .spinner {
+    width: 4rem;
+    height: 4rem;
+    border-top: 3px solid rgba(255, 255, 255, 0.5);
+    border-right: 3px solid transparent;
+    border-radius: 50%;
+    animation: rotation 0.8s linear infinite;
+   }
+   @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+   }
+   .fade-in {
+    animation: fade-in 0.25s linear forwards;
+   }
+   @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+   }
+   .fade-out {
+    animation: fade-out 0.25s linear forwards;
+   }
+   @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+   }
+   
+   
+   body {
+    font-family: sans-serif;
+   }
+   
+   
+   #tabs {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: none;
+    width: 100%;
+    overflow: hidden;
+   }
+   
+   
+   #tabs button {
+    all: unset;
+   }
+   
+   
+   #clothingtab:active {
+    top: 0px;
+    left: 50%;
+    border-radius: 45%;
+   }
+   
+   
+   #healthtab:active {
+    top: 0px;
+    left: 50%;
+    border-radius: 45%;
+   }
+   
+   
+   #sleeptab:active {
+    top: 0px;
+    left: 50%;
+    border-radius: 45%;
+   }
+   
+   
+   #foodtab:active {
+    top: 0px;
+    left: 50%;
+    border-radius: 45%;
+   }
+   
+   
+   #btns {
+    position: absolute;
+    bottom: 50px;
+    left: 52.5%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    width: 100%;
+   }
+   
+   
+   #btns button {
+    all: unset;
+   }
+   
+   
+   #btn1:active {
+    background-color: darkgreen;
+    border-radius: 45%;
+   }
+   
+   
+   #btn2:active {
+    background-color: rgb(137, 11, 78);
+    border-radius: 45%;
+   }
+   
+   
+   #btn3:active {
+    background-color: rgb(193, 80, 0);
+    border-radius: 45%;
+   }
+   
+   
+   #btn4:active {
+    background-color: darkslateblue;
+    border-radius: 45%;
+   }
+   
+   
+   #btn5:active {
+    background-color: rgb(14, 82, 176);
+    border-radius: 45%;
+   }
+   
+   
+   .joystick-container {
+    pointer-events: none;
+    opacity: 0;
+   }
+   
+   
+   .joystick-container.visible {
+    opacity: 1;
+   }
+   
+   
+   .joystick {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 10000px;
+    z-index: 5;
+   }
+   
+   
+   .joystick.position {
+    width: 15vmin;
+    height: 15vmin;
+    border: 2px solid white;
+    z-index: 10;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 50%);
+   }
+   
+   
+   .joystick.origin {
+    width: 40vmin;
+    height: 40vmin;
+    border: 2px solid white;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 50%);
+   }
+   
+   
+   /* DESKTOP AND VR STYLES */
+   @media (min-width: 320px) {
+   }
+   @media (min-width: 481px) {
+   } /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+   @media (min-width: 641px) {
+    .joystick.position {
+      width: 8vmin;
+      height: 8vmin;
+      border: 2px solid white;
+      z-index: 10;
+      box-shadow: 0px 0px 8px rgb(0 0 0 / 50%);
+    }
+   
+   
+    .joystick.origin {
+      width: 20vmin;
+      height: 20vmin;
+      border: 2px solid white;
+      box-shadow: 0px 0px 8px rgb(0 0 0 / 50%);
+    }
+   }
+   
+   
+   h3 {
+    text-align: center;
+    color: white;
+    font-family: 'Nunito', monospace;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+   
+   
+    z-index: 10;
+    position: absolute;
+    bottom: 0vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+   }
+   
+   
+   #recenterBtn {
+    position: absolute;
+    z-index: 5;
+    left: 1vh;
+    bottom: 1vh;
+    max-width: 12vw;
+    rotate: -90deg;
+   }
+   
+   
+   .pulse-once {
+    animation: pulse-once 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) both;
+   }
+   @keyframes pulse-once {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+   }
+   
+   
