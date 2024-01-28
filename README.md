@@ -1,7 +1,6 @@
 # ThriveHive
+ThriveHive is a web based app that gives users the power to crowdsource and easily access information regarding affordable healthcare, foodbanks, shelters and other essential needs and services
 
-
-This is where a description of your project will go. README.md files support [Markdown syntax](https://www.markdownguide.org/basic-syntax/).
 
 ## Setup
 
@@ -17,7 +16,7 @@ All you need is your phone!
 
 ## Run
 
-1. open the [Link]() or scan the QR code with your phone to start the experience
+1. open the [Link](https://emeadevroadshow.8thwall.app/thrivehivemapproject/) or scan the QR code with your phone to start the experience
 
 ```
 
